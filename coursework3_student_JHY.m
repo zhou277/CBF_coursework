@@ -25,7 +25,7 @@ goal = [6, 6];            % Target location [x, y]
 %% Obstacle Definition
 % Single circular obstacle positioned to block the straight-line path.
 % [x, y, radius] - Modify based on your and your groupmate's ID as per instructions.
-obstacle = [2, 4, 2.5];     
+obstacle = [1, 2, 1.5];     
 
 d_min = 0.1;              % Safe distance threshold
 
