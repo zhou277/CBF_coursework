@@ -40,7 +40,7 @@ k_1 = 10;                 % Tuning parameter k1 (affects the safety constraint)
 % Fixed Parameters (kept constant for this assignment)
 gamma2 = 5 * gamma1;      % CLF decay rate for velocity (fixed relative to gamma1)
 k_2 = 1;                  % Tuning parameter k2 (fixed)
-lambda = 0.3;            % Weight of the distance-related term in CLF1 relative to the orientation error term (fixed)
+lambda = 0.05;            % Weight of the distance-related term in CLF1 relative to the orientation error term (fixed)
 
 %% Simulation Loop
 trajectory = zeros(n_steps, 4); % Log: [x, y, theta, v] at each time step
