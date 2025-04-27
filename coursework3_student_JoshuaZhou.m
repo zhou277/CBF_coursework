@@ -34,7 +34,7 @@ v_nom = 1;                % Nominal velocity
 
 % Tuning Parameters (students should tune these three parameters)
 penalty_p = 10;           % Slack variable penalty in the QP
-gamma1 = 2;               % CLF decay rate for orientation
+gamma1 = 1;               % CLF decay rate for orientation
 k_1 = 10;                 % Tuning parameter k1 (affects the safety constraint)
 
 % Fixed Parameters (kept constant for this assignment)
