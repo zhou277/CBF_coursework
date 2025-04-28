@@ -69,7 +69,7 @@ for k = 1:n_steps
     
     % Final CBF constraint in the form A_cbf * [omega; a; delta] ≤ b_cbf
     A_cbf = [LgB_omega, LgB_a, 0];
-    b_cbf = (k_1+k_2) * B_dot + k_1 * k_2 * B + 2 * v *v;    
+    b_cbf = (k_1+k_2) * B_dot + k_1 * k_2 * B - 2 * v *v;    
 
     %% CLF Constraint in QP (Goal Convergence Constraint)
     % Compute distances from the goal.
