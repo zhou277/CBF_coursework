@@ -34,7 +34,7 @@ v_nom = 1;                % Nominal velocity
 
 % Tuning Parameters (students should tune these three parameters)
 penalty_p = 10;           % Slack variable penalty in the QP
-gamma1 = 1;               % CLF decay rate for orientation
+gamma1 = 5;               % CLF decay rate for orientation
 k_1 = 10;                 % Tuning parameter k1 (affects the safety constraint)
 
 % Fixed Parameters (kept constant for this assignment)
@@ -69,7 +69,7 @@ for k = 1:n_steps
     
     % Final CBF constraint in the form A_cbf * [omega; a; delta] ≤ b_cbf
     A_cbf = [LgB_omega, LgB_a, 0];
-    b_cbf = (k_1+k_2) * B_dot + k_1 * k_2 * B;    
+    b_cbf = (k_1+k_2) * B_dot + k_1 * k_2 * B + 2 * v *v;    
 
     %% CLF Constraint in QP (Goal Convergence Constraint)
     % Compute distances from the goal.
