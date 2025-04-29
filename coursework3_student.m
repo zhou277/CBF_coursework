@@ -25,7 +25,7 @@ goal = [6, 6];            % Target location [x, y]
 %% Obstacle Definition
 % Single circular obstacle positioned to block the straight-line path.
 % [x, y, radius] - Modify based on your and your groupmate's ID as per instructions.
-obstacle = [1, 2, 1.5];     
+obstacle = [2, 3, 1.5];     
 
 d_min = 0.1;              % Safe distance threshold
 
@@ -61,27 +61,8 @@ for k = 1:n_steps
 
     %% CBF Constraint in QP (Safety Constraint)
     % The CBF constraint enforces that the barrier function remains non-negative.
-    % HOCBF components
-    dx = x - obstacle(1);
-    dy = y - obstacle(2);
-
-    LfB = 2 * (dx * v * cos(theta) + dy * v * sin(theta));
-
-    L2fB = 2 * v^2 ...
-     + 2 * ((dx * cos(theta) + dy * sin(theta)) * 0) ... % time derivative of v assumed 0
-     + 2 * a * (dx * cos(theta) + dy * sin(theta)) ...
-     + 2 * omega * v * (-dx * sin(theta) + dy * cos(theta));
-
-     % Linear in control input: extract coefficients of a and omega
-     La = 2 * (dx * cos(theta) + dy * sin(theta));
-     Lomega = 2 * v * (-dx * sin(theta) + dy * cos(theta));
-
-     % HOCBF inequality: ddot(B) + 2*k1*dot(B) + k2^2*B >= 0
-     cbf_rhs = -2 * k_1 * LfB - k_2^2 * ((dx^2 + dy^2) - obstacle(3)^2 - d_min);
-
-     A_cbf = [-Lomega, -La, 0];   % Negative sign to bring to A*u <= b
-     b_cbf = cbf_rhs;
-    
+    A_cbf =     
+    b_cbf =     
 
     %% CLF Constraint in QP (Goal Convergence Constraint)
     % Compute distances from the goal.
