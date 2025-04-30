@@ -33,7 +33,7 @@ d_min = 0.1;              % Safe distance threshold
 v_nom = 1;                % Nominal velocity
 
 % Tuning Parameters (students should tune these three parameters)
-penalty_p = 10;           % Slack variable penalty in the QP
+penalty_p = 8000;           % Slack variable penalty in the QP
 gamma1 = 1;               % CLF decay rate for orientation
 k_1 = 10;                 % Tuning parameter k1 (affects the safety constraint)
 
@@ -87,9 +87,10 @@ for k = 1:n_steps
     % The CLF constraints enforce the exponential decrease of V1 and V2.
     % The relaxation variable delta is included to guarantee feasibility.
 
-    A_clf1 = [2 * e_theta, 0,-1];
-    A_clf2 = [0, 2 *(v - v_nom), -1];
-    b_clf1 = -gamma1 * V_1 + 2*theta_d_dot * e_theta -lambda*(2*dgx*v*cos(theta) + 2*dgy*v*sin(theta));
+    A_clf1 = [2 * e_theta, 0             , -1];
+    A_clf2 = [0          , 2 *(v - v_nom), -1];
+    b_clf1 = -gamma1 * V_1 + 2 * theta_d_dot * e_theta -...
+                lambda * (2 * dgx * v * cos(theta) + 2 * dgy * v *sin(theta));
     b_clf2 = -gamma2 * (v - v_nom)^2;
     
     % combine
